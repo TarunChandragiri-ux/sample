@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive E-commerce Layout</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for dual range slider */
+        .range-slider {
+            position: relative;
+            width: 100%;
+            height: 5px;
+            background: #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .range-slider input[type="range"] {
+            position: absolute;
+            -webkit-appearance: none;
+            width: 100%;
+            height: 5px;
+            pointer-events: none;
+            background: transparent;
+        }
+        .range-slider .slider-track {
+            position: absolute;
+            height: 5px;
+            background: #3b82f6;
+            border-radius: 5px;
+            pointer-events: none;
+        }
+        .range-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 15px;
+            width: 15px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+        .range-slider input[type="range"]::-moz-range-thumb {
+            height: 15px;
+            width: 15px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8">
+        <div class=" flex flex-col lg:flex-row gap-6 ">
+            <aside class="w-full lg:w-3/12 bg-white px-8 py-4 rounded-lg shadow-xl  overflow-y-auto bg-gray-50  ">
+                <h2 class="text-xl font-semibold mb-4">Filter</h2>
+                <!-- Brand Filter -->
+                <div class="bg-white p-2 rounded-lg ">
+                    <h3 class="font-semibold mb-2">Brand</h3>
+                    <div class="flex flex-col gap-4">
+                        <div class="brand-item flex items-center justify-between gap-2 cursor-pointer p-2 rounded hover:bg-gray-100" data-brand="Levis">
+                            <div class="flex items-center gap-2">
+                                <img src="assets\levis-logo-svgrepo-com.svg" alt="Levis" class="w-6 h-6">
+                                <span class="text-sm font-semibold brand-name">Levis</span>
+                            </div>
+                            <svg class="w-5 h-5 hidden check-icon text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div class="brand-item flex items-center justify-between gap-2 cursor-pointer p-2 rounded hover:bg-gray-100" data-brand="Adidas">
+                            <div class="flex items-center gap-2">
+                                <img src="assets\32px-Adidas_Logo.svg.png" alt="Adidas" class="w-4 h-4">
+                                <span class="text-sm font-semibold brand-name">Adidas</span>
+                            </div>
+                            <svg class="w-5 h-5 hidden check-icon text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div class="brand-item flex items-center justify-between gap-2 cursor-pointer p-2 rounded hover:bg-gray-100" data-brand="H&M">
+                            <div class="flex items-center gap-2">
+                                <img src="assets\h-m.svg" alt="H&M" class="w-4 h-4">
+                                <span class="text-sm font-semibold brand-name">H&M</span>
+                            </div>
+                            <svg class="w-5 h-5 hidden check-icon text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div class="brand-item flex items-center justify-between gap-2 cursor-pointer p-2 rounded hover:bg-gray-100" data-brand="Puma">
+                            <div class="flex items-center gap-2">
+                                <img src="assets\puma-logo.svg" alt="Puma" class="w-4 h-4">
+                                <span class="text-sm font-semibold brand-name">Puma</span>
+                            </div>
+                            <svg class="w-5 h-5 hidden check-icon text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="mt-4">
+                    <h3 class="font-semibold mb-1">Price</h3>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-gray-500">0 SAR</span>
+                            <span class="text-sm text-gray-500">2000 SAR</span>
+                        </div>
+                        <div class="range-slider">
+                            <input type="range" min="0" max="2000" step="100" id="minRange" value="0">
+                            <input type="range" min="0" max="2000" step="100" id="maxRange" value="2000">
+                            <div class="slider-track" id="sliderTrack"></div>
+                        </div>
+                        <div class="flex items-center justify-between mt-4">
+                            <input type="number" id="minPriceInput" class="w-1/2 text-center border rounded-md py-2 text-sm" value="0">
+                            <span class="mx-2">-</span>
+                            <input type="number" id="maxPriceInput" class="w-1/2 text-center border rounded-md py-2 text-sm" value="2000">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Size Filter -->
+                <div class="mt-4">
+                    <h3 class="font-semibold mb-1">Size</h3>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <div class="grid grid-cols-3 gap-2">
+                            <button class="border rounded-md py-2 px-4 text-center font-semibold text-sm filter-size" data-size="XXS">XXS</button>
+                            <button class="border rounded-md py-2 px-4 text-center font-semibold text-sm filter-size" data-size="XS">XS</button>
+                            <button class="border rounded-md py-2 px-4 text-center font-semibold text-sm filter-size" data-size="S">S</button>
+                            <button class="border rounded-md py-2 px-4 text-center font-semibold text-sm filter-size" data-size="M">M</button>
+                            <button class="border rounded-md py-2 px-4 text-center font-semibold text-sm filter-size" data-size="L">L</button>
+                            <button class="border rounded-md py-2 px-4 text-center font-semibold text-sm filter-size" data-size="XL">XL</button>
+                            <button class="border rounded-md py-2 px-4 text-center font-semibold text-sm filter-size" data-size="XXL">XXL</button>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Product Grid -->
+            <main class="w-full  lg:w-9/12">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold">Products</h2>
+                    <select id="sortSelect" class="hidden lg:block border rounded-md p-2">
+                        <option>Sort by: Popular</option>
+                        <option>Sort by: Newest</option>
+                        <option>Sort by: Price</option>
+                    </select>
+                </div>
+                <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 gap-6"></div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, brand: 'Levis', name: 'Levis Air Zoom', price: 150, size: 'M', image: 'https://assets.ajio.com/medias/sys_master/root/20240928/uDKJ/66f7d9d1260f9c41e83b3272/-473Wx593H-700500790-green-MODEL.jpg' },
+            { id: 2, brand: 'Adidas', name: 'Adidas Ultraboost', price: 180, size: 'L', image: 'https://assets.ajio.com/medias/sys_master/root/20241030/aLqz/6721c519f9b8ef490bf0e4b8/-473Wx593H-443282037-navy-MODEL.jpg' },
+            { id: 3, brand: 'H&M', name: 'H&M jacket', price: 220, size: 'S', image: 'https://assets.ajio.com/medias/sys_master/root/20241023/sw2D/671825ce260f9c41e8936773/-473Wx593H-700626325-black-MODEL.jpg' },
+            { id: 4, brand: 'Puma', name: 'Puma Running Shoes', price: 90, size: 'XL', image: 'https://assets.ajio.com/medias/sys_master/root/20241028/OvLj/671f55d5f9b8ef490be5d875/-473Wx593H-700653028-brown-MODEL.jpg' },
+            { id: 5, brand: 'Levis', name: 'Levis T-Shirt', price: 50, size: 'M', image: 'https://assets.ajio.com/medias/sys_master/root/20240913/H4cW/66e465c81d763220fae62d9b/-473Wx593H-410501681-z732-MODEL.jpg' },
+            { id: 6, brand: 'Adidas', name: 'Adidas Sweatshirt', price: 100, size: 'L', image: 'https://assets.ajio.com/medias/sys_master/root/20240928/uDKJ/66f7d9d1260f9c41e83b3272/-473Wx593H-700500790-green-MODEL.jpg' },
+            { id: 7, brand: 'H&M', name: 'H&M T-Shirt', price: 350, size: 'M', image: 'https://assets.ajio.com/medias/sys_master/root/20230519/8ETa/6467b22bd55b7d0c63ca345e/-473Wx593H-443010423-white-MODEL.jpg' },
+            { id: 8, brand: 'Puma', name: 'Puma Joggers', price: 60, size: 'S', image: 'https://assets.ajio.com/medias/sys_master/root/20241030/aLqz/6721c519f9b8ef490bf0e4b8/-473Wx593H-443282037-navy-MODEL.jpg' },
+            { id: 9, brand: 'Levis', name: 'Levis Training Shoes', price: 120, size: 'L', image: 'https://assets.ajio.com/medias/sys_master/root/20241023/sw2D/671825ce260f9c41e8936773/-473Wx593H-700626325-black-MODEL.jpg' },
+        ];
+        let filteredProducts = [...products];
+
+        const brandItems = document.querySelectorAll('.brand-item');
+        const minRange = document.getElementById('minRange');
+        const maxRange = document.getElementById('maxRange');
+        const minPriceInput = document.getElementById('minPriceInput');
+        const maxPriceInput = document.getElementById('maxPriceInput');
+        const sliderTrack = document.getElementById('sliderTrack');
+        const sizeButtons = document.querySelectorAll('.filter-size');
+        const productGrid = document.getElementById('productGrid');
+        let selectedBrands = [];
+        let selectedSizes = [];
+
+        function updateSliderTrack() {
+            const min = parseInt(minRange.value);
+            const max = parseInt(maxRange.value);
+            const rangeWidth = maxRange.max - maxRange.min;
+            const left = ((min - minRange.min) / rangeWidth) * 100;
+            const right = 100 - ((max - maxRange.min) / rangeWidth) * 100;
+            sliderTrack.style.left = `${left}%`;
+            sliderTrack.style.right = `${right}%`;
+        }
+
+        function applyFilters() {
+            filteredProducts = products.filter(product => 
+                product.price >= minRange.value && product.price <= maxRange.value &&
+                (selectedBrands.length === 0 || selectedBrands.includes(product.brand)) &&
+                (selectedSizes.length === 0 || selectedSizes.includes(product.size))
+            );
+            renderProducts(filteredProducts);
+        }
+
+        minRange.addEventListener('input', () => {
+            minPriceInput.value = minRange.value;
+            updateSliderTrack();
+            applyFilters();
+        });
+
+        maxRange.addEventListener('input', () => {
+            maxPriceInput.value = maxRange.value;
+            updateSliderTrack();
+            applyFilters();
+        });
+
+        minPriceInput.addEventListener('change', () => {
+            minRange.value = minPriceInput.value;
+            updateSliderTrack();
+            applyFilters();
+        });
+
+        maxPriceInput.addEventListener('change', () => {
+            maxRange.value = maxPriceInput.value;
+            updateSliderTrack();
+            applyFilters();
+        });
+
+        brandItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const brand = item.dataset.brand;
+                const checkIcon = item.querySelector('.check-icon');
+                const selected = selectedBrands.includes(brand);
+                if (selected) selectedBrands = selectedBrands.filter(b => b !== brand);
+                else selectedBrands.push(brand);
+                checkIcon.classList.toggle('hidden', selected);
+                applyFilters();
+            });
+        });
+
+        sizeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const size = button.dataset.size;
+                if (selectedSizes.includes(size)) {
+                    selectedSizes = selectedSizes.filter(s => s !== size);
+                    button.classList.remove('bg-blue-500', 'text-white');
+                } else {
+                    selectedSizes.push(size);
+                    button.classList.add('bg-blue-500', 'text-white');
+                }
+                applyFilters();
+            });
+        });
+
+
+        renderProducts(filteredProducts);
+        updateSliderTrack();
+
+         // Sorting functionality
+const sortSelect = document.getElementById('sortSelect');
+
+sortSelect.addEventListener('change', () => {
+    const selectedOption = sortSelect.value;
+
+    let sortedProducts = [...filteredProducts];
+
+    switch (selectedOption) {
+        case 'Sort by: Popular':
+            // Assuming we don't have popularity data; sort by price as a placeholder
+            sortedProducts = sortedProducts.sort((a, b) => b.price - a.price); 
+            break;
+
+        case 'Sort by: Newest':
+            // Sorting by newest can be based on the ID (assuming higher ID means newer)
+            sortedProducts = sortedProducts.sort((a, b) => b.id - a.id);
+            break;
+
+        case 'Sort by: Price':
+            // Sorting by price
+            sortedProducts = sortedProducts.sort((a, b) => a.price - b.price);
+            break;
+
+        default:
+            break;
+    }
+        // Re-render the products after sorting
+        renderProducts(sortedProducts);
+});
+
+
+// Render products
+function renderProducts(products) {
+    productGrid.innerHTML = ''; // Clear existing content
+    products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'bg-white p-3 rounded-lg ';
+        productCard.innerHTML = `
+            <a href="productDetails.html?id=${product.id}" class="block">
+                <img src="${product.image}" alt="${product.name}" class="w-full object-cover rounded-lg mb-4">
+                <h3 class="text-lg font-semibold">${product.name}</h3>
+                <p class="text-gray-500 text-sm">${product.brand}</p>
+                <p class="text-blue-500 font-bold">SAR ${product.price}</p>
+            </a>
+        `;
+        productGrid.appendChild(productCard);
+    });
+}
+
+// Call renderProducts to show all products
+renderProducts(products);
+
+
+    </script>
+</body>
+</html>

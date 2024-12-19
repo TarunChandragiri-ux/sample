@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Container -->
+    <div class="max-w-7xl mx-auto px-4 py-8">
+
+        <!-- Product Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Left Section: Product Images -->
+            <div>
+                <div class="aspect-square w-full rounded-lg overflow-hidden place-items-end">
+                    <!-- Main Product Image -->
+                    <img id="mainImage" src="https://via.placeholder.com/600x600" alt="Product Image"
+                        class=" object-fit">
+                </div>
+
+                <!-- Thumbnail Images -->
+                <div class="mt-4 flex space-x-4 justify-center">
+                    <img id="thumbnail-1" src="https://via.placeholder.com/100x100" alt="Thumbnail 1"
+                        class="w-20 h-20 bg-gray-300 rounded-md cursor-pointer" onclick="changeImage()">
+                    <img id="thumbnail-2" src="https://via.placeholder.com/100x100" alt="Thumbnail 2"
+                        class="w-20 h-20 bg-gray-300 rounded-md cursor-pointer" onclick="changeImage()">
+                    <img id="thumbnail-3" src="https://via.placeholder.com/100x100" alt="Thumbnail 3"
+                        class="w-20 h-20 bg-gray-300 rounded-md cursor-pointer" onclick="changeImage()">
+                    <img id="thumbnail-4" src="https://via.placeholder.com/100x100" alt="Thumbnail 4"
+                        class="w-20 h-20 bg-gray-300 rounded-md cursor-pointer " onclick="changeImage()">
+                </div>
+            </div>
+
+            <!-- Right Section: Product Details -->
+            <div>
+                <p id="productBrand" class="text-gray-500 text-sm">Brand Name</p>
+                <h1 id="productName" class="text-3xl font-semibold mb-2">Product Name</h1>
+
+                <!-- Price and Discount -->
+                <div class="flex items-center mb-4">
+                    <span class="text-gray-400 line-through mr-2" id="originalPrice"></span>
+                    <span id="productPrice" class="text-2xl font-bold text-gray-800">SAR 0.00</span>
+                    <span class="ml-2 bg-gray-200 text-gray-600 text-sm px-2 py-1 rounded" id="discountTag"></span>
+                </div>
+
+                <!-- Rating -->
+                <div class="flex items-center text-yellow-500 space-x-1 mb-4">
+                    <span>★★★★☆</span>
+                    <span class="text-gray-500">(4.9) 1.2K Reviews</span>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <p class="font-semibold text-lg">Description</p>
+                    <p>
+
+                        "Explore our range of premium T-shirts and shirts, crafted from high-quality fabrics for lasting
+                        comfort and style. From classic crewnecks to tailored button-downs, each piece is designed for
+                        versatility, easily pairing with jeans or trousers for any occasion. Whether you're dressing up
+                        for a business meeting or keeping it casual on the weekend, our collection offers both timeless
+                        and contemporary styles to suit your wardrobe. Available in a variety of colors and fits, these
+                        shirts deliver comfort and effortless style all day."</p>
+                </div>
+                <!-- Colors -->
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold">Available Colors</h3>
+                    <div class="flex space-x-3 mt-2">
+                        <button class="w-8 h-8 rounded-full bg-black" onclick="changeColor('black')"></button>
+                        <button class="w-8 h-8 rounded-full bg-blue-500" onclick="changeColor('blue')"></button>
+                        <button class="w-8 h-8 rounded-full bg-green-500" onclick="changeColor('green')"></button>
+                    </div>
+                </div>
+
+                <!-- Size -->
+                <div class="mb-4">
+                    <h3 class="text-lg font-semibold">Size</h3>
+                    <div class="flex space-x-3 mt-2">
+                        <button class="w-10 h-10 border rounded-lg flex items-center justify-center">S</button>
+                        <button class="w-10 h-10 border rounded-lg flex items-center justify-center">M</button>
+                        <button class="w-10 h-10 border rounded-lg flex items-center justify-center">L</button>
+                        <button class="w-10 h-10 border rounded-lg flex items-center justify-center">XL</button>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex space-x-4 mt-6">
+                    <button class="flex-1 py-3 bg-gray-300 rounded-lg">Add To Cart</button>
+                    <button class="flex-1 py-3 bg-black text-white rounded-lg">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommended Items -->
+        <div class="mt-12">
+            <h2 class="text-xl font-semibold mb-4">This item can be cool with this</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Recommended Item 1 -->
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <img src="https://assets.ajio.com/medias/sys_master/root/h05/h0d/15485354573854/-473Wx593H-460571468-red-MODEL.jpg"
+                        alt="Product 1" class="w-full h-36 object-cover rounded-md mb-3">
+                    <h3 class="text-gray-700">Adidas x Jolt</h3>
+                    <p class="text-gray-500">$349.00</p>
+                </div>
+
+                <!-- Recommended Item 2 -->
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <img src="https://assets.ajio.com/medias/sys_master/root/20240824/5SBr/66c90b4f6f60443f3125bf73/-473Wx593H-700316242-white-MODEL.jpg"
+                        alt="Product 2" class="w-full h-36 object-cover rounded-md mb-3">
+                    <h3 class="text-gray-700">P.S Cap</h3>
+                    <p class="text-gray-500">$49.00</p>
+                </div>
+
+                <!-- Recommended Item 3 -->
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <img src="https://assets.ajio.com/medias/sys_master/root/20221221/ptfA/63a32c38aeb269659cffe989/-473Wx593H-460812859-black-MODEL.jpg"
+                        alt="Product 3" class="w-full h-36 object-cover rounded-md mb-3">
+                    <h3 class="text-gray-700">OS Beanie</h3>
+                    <p class="text-gray-500">$20.00</p>
+                </div>
+
+                <!-- Recommended Item 4 -->
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <img src="https://assets.ajio.com/medias/sys_master/root/20220413/FBtX/6256eb9ff997dd03e25b1cf8/-473Wx593H-469178824-black-MODEL2.jpg"
+                        alt="Product 4" class="w-full h-36 object-cover rounded-md mb-3">
+                    <h3 class="text-gray-700">NH X Hekknox Folding Tote</h3>
+                    <p class="text-gray-500">$39.90</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Simulated product data (same as in the product listing)
+        const products = [
+            { id: 1, brand: 'Levis', name: 'Levis Air Zoom', price: 150, size: 'M', image: 'https://assets.ajio.com/medias/sys_master/root/20240928/uDKJ/66f7d9d1260f9c41e83b3272/-473Wx593H-700500790-green-MODEL.jpg' },
+            { id: 2, brand: 'Adidas', name: 'Adidas Ultraboost', price: 180, size: 'L', image: 'https://assets.ajio.com/medias/sys_master/root/20241030/aLqz/6721c519f9b8ef490bf0e4b8/-473Wx593H-443282037-navy-MODEL.jpg' },
+            { id: 3, brand: 'H&M', name: 'H&M jacket', price: 220, size: 'S', image: 'https://assets.ajio.com/medias/sys_master/root/20241023/sw2D/671825ce260f9c41e8936773/-473Wx593H-700626325-black-MODEL.jpg' },
+            { id: 4, brand: 'Puma', name: 'Puma Running Shoes', price: 90, size: 'XL', image: 'https://assets.ajio.com/medias/sys_master/root/20241028/OvLj/671f55d5f9b8ef490be5d875/-473Wx593H-700653028-brown-MODEL.jpg' },
+            { id: 5, brand: 'Levis', name: 'Levis T-Shirt', price: 50, size: 'M', image: 'https://assets.ajio.com/medias/sys_master/root/20240913/H4cW/66e465c81d763220fae62d9b/-473Wx593H-410501681-z732-MODEL.jpg' },
+            { id: 6, brand: 'Adidas', name: 'Adidas Sweatshirt', price: 100, size: 'L', image: 'https://assets.ajio.com/medias/sys_master/root/20240928/uDKJ/66f7d9d1260f9c41e83b3272/-473Wx593H-700500790-green-MODEL.jpg' },
+            { id: 7, brand: 'H&M', name: 'H&M T-Shirt', price: 350, size: 'M', image: 'https://assets.ajio.com/medias/sys_master/root/20230519/8ETa/6467b22bd55b7d0c63ca345e/-473Wx593H-443010423-white-MODEL.jpg' },
+            { id: 8, brand: 'Puma', name: 'Puma Joggers', price: 60, size: 'S', image: 'https://assets.ajio.com/medias/sys_master/root/20241030/aLqz/6721c519f9b8ef490bf0e4b8/-473Wx593H-443282037-navy-MODEL.jpg' },
+            { id: 9, brand: 'Levis', name: 'Levis Training Shoes', price: 120, size: 'L', image: 'https://assets.ajio.com/medias/sys_master/root/20241023/sw2D/671825ce260f9c41e8936773/-473Wx593H-700626325-black-MODEL.jpg' },
+        ];
+
+        // Get the product ID from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = parseInt(urlParams.get('id'));
+
+        const product = products.find(p => p.id === productId);
+
+        // If product exists, display the details
+        if (product) {
+            document.getElementById('mainImage').src = product.image;
+            document.getElementById('thumbnail-1').src = product.image;
+            document.getElementById('thumbnail-2').src = product.image;
+            document.getElementById('thumbnail-3').src = product.image;
+            document.getElementById('thumbnail-4').src = product.image;
+            document.getElementById('productName').textContent = product.name;
+            document.getElementById('productBrand').textContent = product.brand;
+            document.getElementById('productPrice').textContent = `SAR ${product.price}`;
+            document.getElementById('productDescription').textContent = product.description;
+        } else {
+            // If product doesn't exist, show an error (optional)
+            document.body.innerHTML = '<h1 class="text-center text-red-500">Product not found</h1>';
+        }
+
+        function changeImage() {
+            document.getElementById('mainImage').src = product.image;
+        }
+
+        function changeColor(color) {
+            console.log("Selected color:", color);
+        }
+    </script>
+
+</body>
+
+</html>
